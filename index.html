@@ -37,7 +37,7 @@ h3{font:600 1.15rem Georgia,serif;margin:28px 0 4px;color:#444}
 
 .trow{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px 12px}.trow .tabs{margin:4px 0}
 .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-top:12px}.vg.two{grid-template-columns:repeat(2,minmax(0,320px));justify-content:center}.vg.three{grid-template-columns:repeat(3,1fr)}
-.vg div{font-size:.82rem;line-height:1.3;white-space:nowrap}.vg video{margin:0 0 4px;border-radius:6px;background:#f3eefc;display:block}.vg .us{color:#222;font-weight:700}.vg .bk{color:#222;font-weight:700}
+.vg div{font-size:.8rem;line-height:1.3;white-space:nowrap}#libg div,#plusg div{font-size:.74rem;letter-spacing:-.01em}.vg video{margin:0 0 4px;border-radius:6px;background:#f3eefc;display:block}.vg .us{color:#222;font-weight:700}.vg .bk{color:#222;font-weight:700}
 h3 small{font:400 .85rem sans-serif;color:#888}
 .ball{display:grid;grid-template-columns:auto repeat(4,1fr);gap:8px;align-items:center;margin-top:12px}.ball video{margin:0;border-radius:6px;aspect-ratio:1;object-fit:cover}
 .ball b{font-size:.9rem;font-weight:600;color:#444}.ball .rl{font-family:"Palatino Linotype",Palatino,"Book Antiqua",serif;font-weight:700;font-size:1.1rem;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center}.ball .us{color:var(--w);font-weight:700}
@@ -66,8 +66,8 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 <h3>LIBERO</h3>
 <div class="trow"><div class="tabs" data-k="lib"><button data-v="libero_small">Small perturbation</button><button class="on" data-v="libero_large">Large perturbation</button></div><div class="tabs view" data-k="view1"><button data-v="wrist">Wrist (perturbed)</button><button class="on" data-v="agent">Agent view</button><button data-v="canonical">Wrist (canonical)</button></div></div>
 <div class="vg" id="libg"></div>
-<h3>LIBERO-Plus <small>(large perturbation)</small></h3>
-<div class="trow"><div class="tabs" data-k="plus"><button class="on" data-v="plus_bg">Background textures</button><button data-v="plus_layout">Objects layout</button></div><div class="tabs view" data-k="view2"><button data-v="wrist">Wrist (perturbed)</button><button class="on" data-v="agent">Agent view</button><button data-v="canonical">Wrist (canonical)</button></div></div>
+<h3>LIBERO-Plus <small>(large perturbation · background textures)</small></h3>
+<div class="trow"><div class="tabs view" data-k="view2"><button data-v="wrist">Wrist (perturbed)</button><button class="on" data-v="agent">Agent view</button><button data-v="canonical">Wrist (canonical)</button></div></div>
 <div class="vg" id="plusg"></div>
 <h2 id="real">Real Robot</h2>
 <h3>Put the ball in the cup</h3>
@@ -78,8 +78,8 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 <div class="vg three" id="taskg"></div>
 </div>
 <script>
-const OK={"libero_small":{"pi05_ours":true,"sf":false,"groot":false,"groot_ours":true,"pi05":true,"gam":false,"anycam":true},"libero_large":{"pi05_ours":true,"pi05":false,"groot_ours":true,"groot":false,"anycam":false,"gam":false,"sf":false},"plus_bg":{"groot":false,"groot_ours":true,"pi05":false,"anycam":false,"pi05_ours":true},"plus_layout":{"pi05":false,"anycam":false,"groot":false,"groot_ours":true,"pi05_ours":true}};
-const SIMM=[["sf","Spatial Forcing"],["gam","GAM"],["anycam","AnyCamVLA"],["groot","GR00T"],["groot_ours","GR00T + Ours",2],["pi05","π<sub>0.5</sub>"],["pi05_ours","π<sub>0.5</sub> + Ours",1]];
+const OK={"libero_small":{"pi05_ours":true,"sf":false,"groot":false,"groot_ours":true,"pi05":true,"gam":false,"anycam":true},"libero_large":{"pi05_ours":true,"pi05":false,"groot_ours":true,"groot":false,"anycam":false,"gam":false,"sf":false,"kyc":false},"plus_bg":{"groot":false,"groot_ours":true,"pi05":false,"anycam":false,"pi05_ours":true,"kyc":false}};
+const SIMM=[["sf","Spatial Forcing"],["gam","GAM"],["anycam","AnyCamVLA"],["kyc","KYC"],["groot","GR00T"],["groot_ours","GR00T + Ours",2],["pi05","π<sub>0.5</sub>"],["pi05_ours","π<sub>0.5</sub> + Ours",1]];
 const RT={stack:{pi05:1,anycam:0,ours:1},push:{pi05:0,anycam:0,ours:1},arrange:{pi05:0,anycam:0,ours:1}},BD=b=>` <span class="${b?"ok":"no"}">${b?"✓":"✗"}</span>`;
 const st={lib:"libero_large",view1:"agent",plus:"plus_bg",view2:"agent",task:"push"};
 const V=(src,lab,us)=>`<div><video src="${src}" muted playsinline preload="auto"></video><span class="${us==2?"bk":us?"us":""}">${lab}</span></div>`;
@@ -90,7 +90,7 @@ function sync(id){const g=document.getElementById(id),vs=[...g.querySelectorAll(
   v.addEventListener("ended",()=>{if(++done===vs.length)go()})});
  if(ready===vs.length)go()}
 function render(k){
- const sim=(id,t,v)=>{const o=OK[t];document.getElementById(id).innerHTML=SIMM.filter(m=>m[0] in o).map(([k,l,us])=>V(`assets/sim/${t}/${k}_${v}.mp4`,`${l} <span class="${o[k]?"ok":"no"}">${o[k]?"✓":"✗"}</span>`,us)).join("")};
+ const sim=(id,t,v)=>{const o=OK[t],g=document.getElementById(id),ms=SIMM.filter(m=>m[0] in o);g.style.gridTemplateColumns=`repeat(${ms.length},minmax(0,1fr))`;g.innerHTML=ms.map(([k,l,us])=>V(`assets/sim/${t}/${k}_${v}.mp4`,`${l} <span class="${o[k]?"ok":"no"}">${o[k]?"✓":"✗"}</span>`,us)).join("")};
  if(!k||k=="lib"||k=="view1"){sim("libg",st.lib,st.view1);sync("libg")}
  if(!k||k=="plus"||k=="view2"){sim("plusg",st.plus,st.view2);sync("plusg")}
  if(!k||k=="task"){document.getElementById("taskg").innerHTML=[["pi05","π<sub>0.5</sub>"],["anycam","AnyCamVLA"],["ours","WARP-VLA (ours)",1]].map(([k,l,us])=>V(`assets/real/${st.task}_${k}.mp4`,l+BD(RT[st.task][k]),us)).join("");sync("taskg")}}
