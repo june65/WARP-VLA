@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WARP-VLA</title>
+<style>
+:root{--w:rgb(157,57,246);--l:#e6dcfb}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;font:17px/1.6 "Noto Sans",Arial,sans-serif;color:#222;background:#fff}
+header{position:sticky;top:0;background:#fffe;backdrop-filter:blur(6px);border-bottom:1px solid #eee;z-index:1}
+header div{display:flex;gap:24px;justify-content:center;height:52px;align-items:center;overflow-x:auto;padding:0 16px}
+header a{color:#555;text-decoration:none;white-space:nowrap}header a:hover{color:var(--w)}
+header .home{color:#222;font-weight:700}
+.w{max-width:960px;margin:auto;padding:0 16px;text-align:center}
+h1{font:600 2.4rem/1.25 Georgia,serif;margin:40px 0 12px}h1 i{font-style:normal;color:var(--w)}
+.au a{color:var(--w);text-decoration:none}.af{color:#666;font-size:.95rem}
+.b a{display:inline-block;margin:16px 4px;padding:8px 18px;border-radius:99px;background:#363636;color:#fff;text-decoration:none}
+.b a:hover{background:var(--w)}
+video,.ph{width:100%;border-radius:8px;margin:12px 0}
+.ph{aspect-ratio:16/7;background:#f3eefc;display:grid;place-items:center;color:#999}
+h2{font:600 1.8rem Georgia,serif;margin:56px 0 12px}
+h2::after{content:"";display:block;width:48px;height:3px;background:var(--w);margin:10px auto 0;border-radius:2px}
+p{text-align:justify}
+.tabs button{border:1px solid #ccc;background:#fff;padding:6px 16px;border-radius:99px;margin:4px;cursor:pointer;font:inherit}
+.tabs button.on{background:var(--w);color:#fff;border-color:var(--w)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:12px}
+.grid .ph{aspect-ratio:1;margin:0;font-size:14px}
+figure{margin:20px 0}figure img{width:100%;display:block}figcaption{font-size:.9rem;color:#555;text-align:left;margin-top:8px}
+pre{text-align:left;background:#f5f5f5;padding:16px;overflow:auto;border-left:3px solid var(--w)}
+.g{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:stretch;text-align:left}
+.fig{overflow:hidden;padding:12px;border-radius:12px}
+.in{position:relative}.in img{display:block;width:100%}
+.hl{position:absolute;box-sizing:border-box;border:3px solid var(--w);border-radius:10px;opacity:0;transition:.3s;pointer-events:none;box-shadow:0 0 0 3000px #ffffffb8}
+.lab{position:absolute;margin-left:12px;transform:translateY(-50%);background:var(--w);color:#fff;font:700 13px sans-serif;padding:3px 10px;border-radius:99px;opacity:0;transition:.3s;white-space:nowrap;pointer-events:none}
+.st{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:12px 0;font-size:.95rem;line-height:1.55}.st::before{content:"";position:absolute;left:13px;top:var(--lt,26px);bottom:var(--lb,34px);width:2px;background:var(--l)}
+.s{position:relative;padding-left:44px;cursor:default}
+.s::before{content:attr(data-n);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;font:700 14px/28px sans-serif;text-align:center;background:var(--l);color:var(--w);transition:.2s;z-index:1}
+.s.on::before{background:var(--w);color:#fff}.s.on b{color:var(--w)}
+.tb img{border:1px solid #eee;border-radius:8px}.tb.sm{max-width:560px;margin:20px auto}
+h3{font:600 1.15rem Georgia,serif;margin:28px 0 4px;color:#444}
+.note{text-align:center;color:#666;font-size:.9rem;margin:0 0 4px}.ok{color:#0ac50a;font-weight:700}.no{color:#e03131;font-weight:700}
+.tabs.view button{font-size:.85rem;padding:4px 12px}.tabs.view button.on{background:#363636;border-color:#363636}
+.vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-top:12px}.vg.two{grid-template-columns:repeat(2,minmax(0,320px));justify-content:center}.vg.three{grid-template-columns:repeat(3,1fr)}
+.vg div{font-size:.82rem;line-height:1.3;white-space:nowrap}.vg video{margin:0 0 4px;border-radius:6px;background:#f3eefc;display:block}.vg .us{color:#222;font-weight:700}.vg .bk{color:#222;font-weight:700}
+h3 small{font:400 .85rem sans-serif;color:#888}
+.ball{display:grid;grid-template-columns:auto repeat(4,1fr);gap:8px;align-items:center;margin-top:12px}.ball video{margin:0;border-radius:6px;aspect-ratio:1;object-fit:cover}
+.ball b{font-size:.9rem;font-weight:600;color:#444}.ball .rl{font-size:.85rem;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center}.ball .us{color:var(--w);font-weight:700}
+@media(max-width:760px){.vg.three{grid-template-columns:1fr}}
+@media(max-width:760px){.g{grid-template-columns:1fr}}
+</style></head><body>
+<header><div><a class="home" href="#">WARP-VLA</a><a href="#abstract">Abstract</a><a href="#video">Video</a><a href="#method">Method</a><a href="#results">Results</a><a href="#rollouts">Rollouts</a><a href="#real">Real Robot</a><a href="#ablation">Ablation</a><a href="#bibtex">BibTeX</a></div></header>
+<div class="w">
+<h1><i>W</i><i>A</i><i>R</i><i>P</i>-VLA: <i>W</i>rist-Camera <i>A</i>daptation for View-<i>R</i>obust <i>P</i>olicy Execution in Vision-Language-Action Models</h1>
+<div class="au"><a href="#">Junmyeong Lee</a><sup>1,*</sup>, <a href="#">Dongmin Shin</a><sup>1,2,*</sup>, <a href="#">Min-Gyu Park</a><sup>2</sup>, <a href="#">Wooseok Jeon</a><sup>1</sup>, <a href="#">Inho Chang</a><sup>2</sup>, <a href="#">Hae-Gon Jeon</a><sup>1,&dagger;</sup></div>
+<div class="af"><sup>1</sup>Yonsei University &nbsp; <sup>2</sup>Korea Electronics Technology Institute (KETI)<br><sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding author · ICRA 2027</div>
+<div class="b"><a href="#">Paper</a><a href="#">arXiv</a><a href="#">Code</a><a href="#video">Video</a></div>
+<figure><img src="assets/fig/teaser.jpg" alt="Overview of WARP-VLA" loading="lazy"><figcaption><b>Overview of WARP-VLA.</b> (a) Wrist-camera changes degrade VLA performance. (b) Existing methods rely on novel view synthesis or explicit camera geometry. (c) WARP-VLA aligns perturbed wrist features to the canonical feature space with an anchor-guided MoE — no calibration, no policy fine-tuning. (d) Real-robot deployment.</figcaption></figure>
+<h2 id="abstract">Abstract</h2>
+<p>Despite recent advances in Vision-Language-Action models (VLAs) for robotic manipulation, their performance remains sensitive to changes in camera configuration. The problem becomes more evident in cross-setup deployment, as reproducing the exact camera pose used for training is nearly impossible. Unlike fixed external views, wrist views are more challenging because the camera moves with the robot, causing even small mounting variations to alter fine-grained geometric cues. To address this, we propose WARP-VLA, a camera-view-robust VLA for diverse wrist camera configurations. WARP-VLA adopts a Mixture-of-Experts (MoE) architecture where individual experts learn view-specific feature transformations, and a router combines them based on implicit view information. This allows the policy to be deployed without requiring camera extrinsic parameters as additional input. Through experiments on the LIBERO benchmark, WARP-VLA improves the average success rate of π<sub>0.5</sub> from 39.2% to 78.3% under wrist-view perturbations. The real-robot experiments further show that the feature-level adaptation learned in simulation successfully transfers to diverse deployment settings.</p>
+<h2 id="video">Video</h2><video src="assets/warp_vla_video.mp4" controls></video>
+<h2 id="method">Method</h2><div class="g"><div class="fig"><div class="in"><img src="assets/fig/method.jpg" alt="Training pipeline"><div class="hl" id="hl"></div><div class="lab" id="lab"></div></div></div>
+<div class="st" id="st">
+<div class="s" data-n="1" data-r="0,7,22,89"><b>Encode.</b> The frozen SigLIP encoder turns the perturbed wrist image into tokens <i>X</i><sup>p</sup>. A pseudo-canonical anchor <i>A</i>, averaged over the policy&rsquo;s canonical fine-tuning data, serves as the reference view.</div>
+<div class="s" data-n="2" data-r="22,6,57,41"><b>Route.</b> Channel mean, standard deviation, and spatial moments (&mu;, &sigma;, m<sup>x</sup>, m<sup>y</sup>) of <i>X</i><sup>p</sup>&minus;<i>A</i> and <i>A</i> tell the router how far the view deviates; an MLP predicts expert weights &omega; for translation and tilt groups &mdash; no camera parameters.</div>
+<div class="s" data-n="3" data-r="22,46,57,52"><b>Transform.</b> Each expert is a cross-attention Transformer (perturbed tokens as queries, anchor as keys and values) built from a shared transformation plus a LoRA-style residual. Outputs are mixed by &omega; into canonical-like features <i>X&#770;</i><sup>c</sup>.</div>
+<div class="s" data-n="4" data-r="80,8,20,92"><b>Act.</b> <i>X&#770;</i><sup>c</sup> is trained to match paired canonical features <i>X</i><sup>c</sup> with the encoder and policy frozen. At deployment it simply replaces the wrist tokens &mdash; no policy fine-tuning.</div></div></div>
+<h2 id="results">Results</h2>
+<figure class="tb"><img src="assets/fig/table_main.png" alt="Main results table" loading="lazy"><figcaption><b>Success rates (%) under wrist-view perturbations on LIBERO and LIBERO-Plus.</b> Green numbers show the gain of +Ours over each base policy.</figcaption></figure>
+<h2 id="rollouts">Simulation Rollouts</h2>
+<p class="note">Same wrist-camera perturbation for every model. <span class="ok">✓</span> success · <span class="no">✗</span> failure</p>
+<h3>LIBERO</h3>
+<div class="tabs" data-k="lib"><button data-v="libero_small">Small perturbation</button><button class="on" data-v="libero_large">Large perturbation</button></div>
+<div class="tabs view" data-k="view1"><button data-v="wrist">Wrist (perturbed)</button><button class="on" data-v="agent">Agent view</button><button data-v="canonical">Wrist (canonical)</button></div>
+<div class="vg" id="libg"></div>
+<h3>LIBERO-Plus <small>(large perturbation)</small></h3>
+<div class="tabs" data-k="plus"><button class="on" data-v="plus_bg">Background textures</button><button data-v="plus_layout">Objects layout</button></div>
+<div class="tabs view" data-k="view2"><button data-v="wrist">Wrist (perturbed)</button><button class="on" data-v="agent">Agent view</button><button data-v="canonical">Wrist (canonical)</button></div>
+<div class="vg" id="plusg"></div>
+<h2 id="real">Real Robot</h2>
+<h3>Put the ball in the cup</h3>
+<div class="ball" id="ballg"></div>
+<h3>More tasks</h3>
+<p class="note"><span class="ok">✓</span> success · <span class="no">✗</span> failure</p>
+<div class="tabs" data-k="task"><button data-v="stack">Stack the cube · Small</button><button data-v="push">Push the cube · Medium</button><button class="on" data-v="arrange">Arrange fruit · Large</button></div>
+<div class="vg three" id="taskg"></div>
+<h2 id="ablation">Ablation</h2>
+<figure class="tb sm"><img src="assets/fig/table_ablation.png" alt="Ablation table" loading="lazy"><figcaption><b>Ablations on LIBERO.</b> Removing the view-specific experts or the learned router lowers robustness.</figcaption></figure>
+<h2 id="bibtex">BibTeX</h2><pre>@inproceedings{warpvla2027, title={WARP-VLA}, booktitle={ICRA}, year={2027}}</pre><br>
+</div>
+<script>
+const OK={"libero_small":{"pi05_ours":true,"sf":false,"groot":false,"groot_ours":true,"pi05":true,"gam":false,"anycam":true},"libero_large":{"pi05_ours":true,"pi05":false,"groot_ours":true,"groot":false,"anycam":false,"gam":false,"sf":false},"plus_bg":{"groot":false,"groot_ours":true,"pi05":false,"anycam":false,"pi05_ours":true},"plus_layout":{"pi05":false,"anycam":false,"groot":false,"groot_ours":true,"pi05_ours":true}};
+const SIMM=[["sf","Spatial Forcing"],["gam","GAM"],["anycam","AnyCamVLA"],["groot","GR00T"],["groot_ours","GR00T + Ours",2],["pi05","π<sub>0.5</sub>"],["pi05_ours","π<sub>0.5</sub> + Ours",1]];
+const RT={stack:{pi05:1,anycam:0,ours:1},push:{pi05:0,anycam:0,ours:1},arrange:{pi05:0,anycam:0,ours:1}},BD=b=>` <span class="${b?"ok":"no"}">${b?"✓":"✗"}</span>`;
+const st={lib:"libero_large",view1:"agent",plus:"plus_bg",view2:"agent",task:"arrange"};
+const V=(src,lab,us)=>`<div><video src="${src}" muted playsinline preload="auto"></video><span class="${us==2?"bk":us?"us":""}">${lab}</span></div>`;
+function sync(id){const g=document.getElementById(id),vs=[...g.querySelectorAll("video")],tok=(g._t=(g._t||0)+1);let ready=0,done=0;
+ const go=()=>{if(g._t!==tok)return;done=0;vs.forEach(v=>{v.currentTime=0;v.play().catch(()=>{})})};
+ vs.forEach(v=>{v.muted=true;
+  if(v.readyState>=3)ready++;else v.addEventListener("canplaythrough",()=>{if(++ready===vs.length)go()},{once:true});
+  v.addEventListener("ended",()=>{if(++done===vs.length)go()})});
+ if(ready===vs.length)go()}
+function render(k){
+ const sim=(id,t,v)=>{const o=OK[t];document.getElementById(id).innerHTML=SIMM.filter(m=>m[0] in o).map(([k,l,us])=>V(`assets/sim/${t}/${k}_${v}.mp4`,`${l} <span class="${o[k]?"ok":"no"}">${o[k]?"✓":"✗"}</span>`,us)).join("")};
+ if(!k||k=="lib"||k=="view1"){sim("libg",st.lib,st.view1);sync("libg")}
+ if(!k||k=="plus"||k=="view2"){sim("plusg",st.plus,st.view2);sync("plusg")}
+ if(!k||k=="task"){document.getElementById("taskg").innerHTML=[["pi05","π<sub>0.5</sub>"],["anycam","AnyCamVLA"],["ours","WARP-VLA (ours)",1]].map(([k,l,us])=>V(`assets/real/${st.task}_${k}.mp4`,l+BD(RT[st.task][k]),us)).join("");sync("taskg")}}
+document.querySelectorAll(".tabs[data-k]").forEach(tb=>tb.querySelectorAll("button").forEach(b=>b.onclick=()=>{tb.querySelector(".on").classList.remove("on");b.classList.add("on");st[tb.dataset.k]=b.dataset.v;render(tb.dataset.k)}));
+render();
+{const L=["canonical","small","medium","large"],R=[["pi05","π<sub>0.5</sub>"],["ours","π<sub>0.5</sub> + WARP-VLA",1]];
+document.getElementById("ballg").innerHTML="<span></span>"+L.map(l=>`<b>${l[0].toUpperCase()+l.slice(1)}</b>`).join("")+R.map(([k,n,us])=>`<span class="rl ${us?"us":""}">${n}</span>`+L.map(l=>`<video src="assets/real/ball_${l}_${k}.mp4" muted playsinline preload="auto"></video>`).join("")).join("");}sync("ballg");
+{const N=["Encode","Route","Transform","Act"],hl=document.getElementById("hl"),lab=document.getElementById("lab"),ss=[...document.querySelectorAll("#st .s")];
+function spot(i){ss.forEach((s,j)=>s.classList.toggle("on",i==j));if(i<0){hl.style.opacity=lab.style.opacity=0;return}
+const[x,y,w,h]=ss[i].dataset.r.split(",");Object.assign(hl.style,{left:x+"%",top:`calc(${y}% - 5px)`,width:w+"%",height:`calc(${h}% + 5px)`,opacity:1});
+Object.assign(lab.style,{left:x+"%",top:`calc(${y}% - 5px)`,opacity:1});lab.textContent=(i+1)+". "+N[i]}
+ss.forEach((s,i)=>{s.onmouseenter=()=>spot(i);s.onmouseleave=()=>spot(-1)});
+const st=document.getElementById("st"),fit=()=>{st.style.setProperty("--lt",(ss[0].offsetTop+14)+"px");st.style.setProperty("--lb",(st.clientHeight-ss[3].offsetTop-14)+"px")};addEventListener("load",fit);addEventListener("resize",fit);fit();}
+</script></body></html>
