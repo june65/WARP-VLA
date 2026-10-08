@@ -79,7 +79,7 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 <div class="ball" id="ballg"></div>
 <h3>More tasks</h3>
 <p class="note">Same wrist-camera perturbation for every model. <span class="ok">✓</span> success · <span class="no">✗</span> failure</p>
-<div class="tabs" data-k="task"><button data-v="stack">Stack the cube · Small</button><button data-v="push">Push the cube · Medium</button><button class="on" data-v="arrange">Arrange fruit · Large</button></div>
+<div class="tabs" data-k="task"><button data-v="stack">Stack the cube · Small</button><button data-v="arrange">Arrange fruit · Medium</button><button class="on" data-v="push">Push the cube · Large</button></div>
 <div class="vg three" id="taskg"></div>
 <h2 id="ablation">Ablation</h2>
 <figure class="tb sm"><img src="assets/fig/table_ablation.png" alt="Ablation table" loading="lazy"><figcaption><b>Ablations on LIBERO.</b> Removing the view-specific experts or the learned router lowers robustness.</figcaption></figure>
@@ -89,7 +89,7 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 const OK={"libero_small":{"pi05_ours":true,"sf":false,"groot":false,"groot_ours":true,"pi05":true,"gam":false,"anycam":true},"libero_large":{"pi05_ours":true,"pi05":false,"groot_ours":true,"groot":false,"anycam":false,"gam":false,"sf":false},"plus_bg":{"groot":false,"groot_ours":true,"pi05":false,"anycam":false,"pi05_ours":true},"plus_layout":{"pi05":false,"anycam":false,"groot":false,"groot_ours":true,"pi05_ours":true}};
 const SIMM=[["sf","Spatial Forcing"],["gam","GAM"],["anycam","AnyCamVLA"],["groot","GR00T"],["groot_ours","GR00T + Ours",2],["pi05","π<sub>0.5</sub>"],["pi05_ours","π<sub>0.5</sub> + Ours",1]];
 const RT={stack:{pi05:1,anycam:0,ours:1},push:{pi05:0,anycam:0,ours:1},arrange:{pi05:0,anycam:0,ours:1}},BD=b=>` <span class="${b?"ok":"no"}">${b?"✓":"✗"}</span>`;
-const st={lib:"libero_large",view1:"agent",plus:"plus_bg",view2:"agent",task:"arrange"};
+const st={lib:"libero_large",view1:"agent",plus:"plus_bg",view2:"agent",task:"push"};
 const V=(src,lab,us)=>`<div><video src="${src}" muted playsinline preload="auto"></video><span class="${us==2?"bk":us?"us":""}">${lab}</span></div>`;
 function sync(id){const g=document.getElementById(id),vs=[...g.querySelectorAll("video")],tok=(g._t=(g._t||0)+1);let ready=0,done=0;
  const go=()=>{if(g._t!==tok)return;done=0;vs.forEach(v=>{v.currentTime=0;v.play().catch(()=>{})})};
