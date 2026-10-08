@@ -11,7 +11,7 @@ header .home{color:#222;font-weight:700}
 .w{max-width:960px;margin:auto;padding:0 16px;text-align:center}
 h1{font:600 2.4rem/1.25 Georgia,serif;margin:40px 0 12px}h1 i{font-style:normal;color:var(--w)}
 .au a{color:var(--w);text-decoration:none}.af{color:#666;font-size:.95rem}
-.org{white-space:nowrap}.org img{height:18px;vertical-align:-4px;margin-right:5px}
+.org{white-space:nowrap}.org img{vertical-align:middle;margin-right:5px;position:relative;top:-1px}.org .yl{height:24px}.org .kl{height:14px}
 .b a{display:inline-block;margin:16px 4px;padding:8px 18px;border-radius:99px;background:#363636;color:#fff;text-decoration:none}
 .b a:hover{background:var(--w)}
 video,.ph{width:100%;border-radius:8px;margin:12px 0}
@@ -51,7 +51,7 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 <div class="w">
 <h1><i>W</i><i>A</i><i>R</i><i>P</i>-VLA: <i>W</i>rist-Camera <i>A</i>daptation for View-<i>R</i>obust <i>P</i>olicy Execution in Vision-Language-Action Models</h1>
 <div class="au"><a href="#">Junmyeong Lee</a><sup>1,*</sup>, <a href="#">Dongmin Shin</a><sup>1,2,*</sup>, <a href="#">Min-Gyu Park</a><sup>2</sup>, <a href="#">Wooseok Jeon</a><sup>1</sup>, <a href="#">Inho Chang</a><sup>2</sup>, <a href="#">Hae-Gon Jeon</a><sup>1,&dagger;</sup></div>
-<div class="af"><span class="org"><img src="assets/logo/yonsei.png" alt=""><sup>1</sup>Yonsei University</span> &nbsp; <span class="org"><img src="assets/logo/keti.png" alt=""><sup>2</sup>Korea Electronics Technology Institute (KETI)</span><br><sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding author · Under review</div>
+<div class="af"><span class="org"><img src="assets/logo/yonsei.png" alt="" class="yl"><sup>1</sup>Yonsei University</span> &nbsp; <span class="org"><img src="assets/logo/keti.png" alt="" class="kl"><sup>2</sup>Korea Electronics Technology Institute (KETI)</span><br><sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding author · Under review</div>
 <div class="b"><a href="#">Paper</a><a href="#">arXiv</a><a href="#">Code</a><a href="#video">Video</a></div>
 <figure><img src="assets/fig/teaser.jpg" alt="Overview of WARP-VLA" loading="lazy"><figcaption><b>Overview of WARP-VLA.</b> (a) Wrist-camera changes degrade VLA performance. (b) Existing methods rely on novel view synthesis or explicit camera geometry. (c) WARP-VLA aligns perturbed wrist features to the canonical feature space with an anchor-guided MoE — no calibration, no policy fine-tuning. (d) Real-robot deployment.</figcaption></figure>
 <h2 id="abstract">Abstract</h2>
@@ -79,7 +79,7 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 <h3>Put the ball in the cup</h3>
 <div class="ball" id="ballg"></div>
 <h3>More tasks</h3>
-<p class="note"><span class="ok">✓</span> success · <span class="no">✗</span> failure</p>
+<p class="note">Same wrist-camera perturbation for every model. <span class="ok">✓</span> success · <span class="no">✗</span> failure</p>
 <div class="tabs" data-k="task"><button data-v="stack">Stack the cube · Small</button><button data-v="push">Push the cube · Medium</button><button class="on" data-v="arrange">Arrange fruit · Large</button></div>
 <div class="vg three" id="taskg"></div>
 <h2 id="ablation">Ablation</h2>
