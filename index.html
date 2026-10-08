@@ -4,13 +4,14 @@
 :root{--w:rgb(157,57,246);--l:#e6dcfb}
 html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;font:17px/1.6 "Noto Sans",Arial,sans-serif;color:#222;background:#fff}
-header{position:sticky;top:0;background:#fffe;backdrop-filter:blur(6px);border-bottom:1px solid #eee;z-index:1}
+header{position:sticky;top:0;background:#fffe;backdrop-filter:blur(6px);border-bottom:1px solid #eee;z-index:100}
 header div{display:flex;gap:24px;justify-content:center;height:52px;align-items:center;overflow-x:auto;padding:0 16px}
 header a{color:#555;text-decoration:none;white-space:nowrap}header a:hover{color:var(--w)}
 header .home{color:#222;font-weight:700}
 .w{max-width:960px;margin:auto;padding:0 16px;text-align:center}
 h1{font:600 2.4rem/1.25 Georgia,serif;margin:40px 0 12px}h1 i{font-style:normal;color:var(--w)}
 .au a{color:var(--w);text-decoration:none}.af{color:#666;font-size:.95rem}
+.org{white-space:nowrap}.org img{height:18px;vertical-align:-4px;margin-right:5px}
 .b a{display:inline-block;margin:16px 4px;padding:8px 18px;border-radius:99px;background:#363636;color:#fff;text-decoration:none}
 .b a:hover{background:var(--w)}
 video,.ph{width:100%;border-radius:8px;margin:12px 0}
@@ -50,7 +51,7 @@ h3 small{font:400 .85rem sans-serif;color:#888}
 <div class="w">
 <h1><i>W</i><i>A</i><i>R</i><i>P</i>-VLA: <i>W</i>rist-Camera <i>A</i>daptation for View-<i>R</i>obust <i>P</i>olicy Execution in Vision-Language-Action Models</h1>
 <div class="au"><a href="#">Junmyeong Lee</a><sup>1,*</sup>, <a href="#">Dongmin Shin</a><sup>1,2,*</sup>, <a href="#">Min-Gyu Park</a><sup>2</sup>, <a href="#">Wooseok Jeon</a><sup>1</sup>, <a href="#">Inho Chang</a><sup>2</sup>, <a href="#">Hae-Gon Jeon</a><sup>1,&dagger;</sup></div>
-<div class="af"><sup>1</sup>Yonsei University &nbsp; <sup>2</sup>Korea Electronics Technology Institute (KETI)<br><sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding author · ICRA 2027</div>
+<div class="af"><span class="org"><img src="assets/logo/yonsei.png" alt=""><sup>1</sup>Yonsei University</span> &nbsp; <span class="org"><img src="assets/logo/keti.png" alt=""><sup>2</sup>Korea Electronics Technology Institute (KETI)</span><br><sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding author · Under review</div>
 <div class="b"><a href="#">Paper</a><a href="#">arXiv</a><a href="#">Code</a><a href="#video">Video</a></div>
 <figure><img src="assets/fig/teaser.jpg" alt="Overview of WARP-VLA" loading="lazy"><figcaption><b>Overview of WARP-VLA.</b> (a) Wrist-camera changes degrade VLA performance. (b) Existing methods rely on novel view synthesis or explicit camera geometry. (c) WARP-VLA aligns perturbed wrist features to the canonical feature space with an anchor-guided MoE — no calibration, no policy fine-tuning. (d) Real-robot deployment.</figcaption></figure>
 <h2 id="abstract">Abstract</h2>
